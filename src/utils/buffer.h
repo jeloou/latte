@@ -13,7 +13,7 @@ struct lt_buffer_s {
   int offset;
 };
 
-void lt_buffer_init(lt_buffer_t *buf, int capacity);
+int lt_buffer_init(lt_buffer_t *buf, int capacity);
 iovec_t *lt_buffer_to_iovec(lt_buffer_t bufs[], int nbufs);
 
 #endif

@@ -3,7 +3,7 @@
 
 #include "buffer.h"
 
-void lt_buffer_init(lt_buffer_t *buf, int capacity) {
+int lt_buffer_init(lt_buffer_t *buf, int capacity) {
   buf->capacity = capacity;
   buf->offset = 0;
   buf->len = 0;

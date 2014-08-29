@@ -1,5 +1,4 @@
-#include <errno.h>
-#include <stdio.h>
+#include <unistd.h>
 
 #include "fs.h"
 #include "utils/common.h"
@@ -32,7 +31,7 @@ int lt_fs_open(lt_fs_t *req, const char *path, int flags, int mode) {
 
 int lt_fs_read(lt_fs_t *req, lt_file file, lt_buffer_t bufs[], unsigned int nbufs, off_t off) {
   ssize_t r;
-
+  
   INIT(READ);
   req->file = file;
 
@@ -65,6 +64,12 @@ int lt_fs_read(lt_fs_t *req, lt_file file, lt_buffer_t bufs[], unsigned int nbuf
   
   req->result = r;
   if (r >= 0) {
+    if (nbufs > 1) {
+      
+    } else {
+      bufs[0].len = r;
+    }
+    
     return req->result;
   }
 
