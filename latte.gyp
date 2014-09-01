@@ -21,7 +21,9 @@
       "src/parser.c",
                  
       "src/utils/fs.c",
-      "src/utils/buffer.c"
+      "src/utils/buffer.c",
+      "src/utils/common.c",
+      "src/utils/list.c"
     ]
   }]
 }
