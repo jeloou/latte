@@ -21,5 +21,7 @@ void lt_list_init(lt_list_t *l);
 void lt_list_push(lt_list_t *l, void *v);
 void *lt_list_last(lt_list_t *l);
 void *lt_list_pop(lt_list_t *l);
+int lt_list_has_next(lt_list_t *l);
+void *lt_list_next(lt_list_t *l);
 
 #endif /* SRC_LIST_H_ */

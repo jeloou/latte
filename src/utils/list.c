@@ -17,7 +17,7 @@ void lt_list_push(lt_list_t *l, void *v) {
   n->v = v;
 
   if (l->tail == NULL) {
-    l->tail = l->head = n;
+    l->tail = l->i = l->head = n;
     return;
   }
 
@@ -53,5 +53,23 @@ void *lt_list_last(lt_list_t *l) {
   return NULL;
 }
 
+int lt_list_has_next(lt_list_t *l) {
+  if (l->i != NULL) {
+    return 1;
+  }
+  return 0;
+}
 
+void *lt_list_next(lt_list_t *l) {
+  lt_list__node_t *i;
+  
+  i = l->i;
+  l->i = l->i->next;
+  
+  return i->v;
+}
+
+void lt_list_reset(lt_list_t *l) {
+  l->i = l->head;
+}
 
