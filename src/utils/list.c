@@ -14,6 +14,7 @@ void lt_list_push(lt_list_t *l, void *v) {
   
   n = malloc(sizeof(*n));
   n->next = NULL;
+  n->prev = l->tail;
   n->v = v;
 
   if (l->tail == NULL) {
@@ -69,7 +70,21 @@ void *lt_list_next(lt_list_t *l) {
   return i->v;
 }
 
-void lt_list_reset(lt_list_t *l) {
+void *lt_list_prev(lt_list_t *l) {
+  lt_list__node_t *i;
+
+  i = l->i;
+  l->i = l->i->prev;
+  
+  return i->v;
+}
+
+void lt_list_reset(lt_list_t *l, unsigned int tail) {
+  if (tail > 0) {
+    l->i = l->tail;
+    return;
+  }
+  
   l->i = l->head;
 }
 
