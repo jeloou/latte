@@ -24,7 +24,7 @@ void lt_list_push(lt_list_t *l, void *v) {
 
   l->tail->next = n;
   l->tail = n;
-  l->len++;
+  ++l->len;
 }
 
 void *lt_list_pop(lt_list_t *l) {
@@ -34,12 +34,13 @@ void *lt_list_pop(lt_list_t *l) {
   if (l->tail == NULL) {
     return NULL;
   }
-
+  
   n = l->tail;
   l->tail = n->prev;
-  l->tail->next = NULL;
-  l->len--;
-  
+  if (l->tail != NULL) {
+    l->tail->next = NULL;
+  }
+  --l->len;
   v = n->v;
   free(n);
   
